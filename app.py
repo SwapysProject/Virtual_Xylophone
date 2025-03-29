@@ -7,7 +7,6 @@ import pygame
 from streamlit_webrtc import webrtc_streamer
 import av
 
-os.environ["SDL_AUDIODRIVER"] = "dummy"
 pygame.mixer.init()
 
 # Set screen dimensions
@@ -62,9 +61,11 @@ FRAME_WINDOW = st.image([])
 XYLOPHONE_WINDOW = st.image([])
 
 # Track the last bars played
+global last_bars
 last_bars = set()
 
 def video_frame_callback(frame):
+    global last_bars
     img = frame.to_ndarray(format="bgr24")
     rgb_frame = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     results = hands.process(rgb_frame)
@@ -102,7 +103,6 @@ def video_frame_callback(frame):
         cv2.rectangle(xylophone, (bars[i].x, bars[i].y), (bars[i].x + bars[i].width, bars[i].y + bars[i].height), RED, -1)
         cv2.putText(xylophone, f"{i+1}", (bars[i].x + 10, XYLOPHONE_HEIGHT // 2), cv2.FONT_HERSHEY_SIMPLEX, 1, WHITE, 2)
 
-    global last_bars
     last_bars = current_bars
 
     FRAME_WINDOW.image(img, channels="BGR")
