@@ -1,7 +1,12 @@
 pip>=25.0.1
+pygame>=2.5.0
+
 
 streamlit
 opencv-python
 mediapipe
 simpleaudio
 pygame
+streamlit-webrtc
+av
+opencv-python-headless
