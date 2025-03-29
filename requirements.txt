@@ -1,4 +1,6 @@
 pip>=25.0.1
+pygame>=2.5.0
+
 
 streamlit
 opencv-python
