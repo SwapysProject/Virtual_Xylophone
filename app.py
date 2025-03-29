@@ -7,6 +7,7 @@ import pygame
 from streamlit_webrtc import webrtc_streamer
 import av
 
+os.environ['SDL_AUDIODRIVER'] = 'dummy'
 pygame.mixer.init()
 
 # Set screen dimensions
