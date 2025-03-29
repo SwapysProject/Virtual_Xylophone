@@ -5,6 +5,7 @@ import os
 import mediapipe as mp
 import pygame
 
+os.environ["SDL_AUDIODRIVER"] = "dummy"
 pygame.mixer.init()
 
 # Set screen dimensions
